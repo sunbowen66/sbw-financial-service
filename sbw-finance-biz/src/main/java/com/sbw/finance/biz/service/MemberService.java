@@ -27,11 +27,11 @@ public interface MemberService {
      * @param form
      * @return
      */
-    boolean updateEmailAndName(UpdateEmailAndNameForm form);
+    //boolean updateEmailAndName(UpdateEmailAndNameForm form);
 
     /**
      * 查询用户列表
      * @return
      */
-    List<ListMemberVo> listMember();
+    //List<ListMemberVo> listMember();
 }

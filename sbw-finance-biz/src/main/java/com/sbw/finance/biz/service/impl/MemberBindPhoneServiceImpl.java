@@ -24,7 +24,7 @@ import static com.sbw.finance.biz.domain.MemberBindPhoneField.*;
 @RequiredArgsConstructor
 public class MemberBindPhoneServiceImpl implements MemberBindPhoneService {
     final MemberBindPhoneMapper memberBindPhoneMapper;
-//    final PasswordEncoder passwordEncoder;
+    final PasswordEncoder passwordEncoder;
 //    final TokenService<AdminDTO> tokenService;
 
     /**
@@ -56,7 +56,7 @@ public class MemberBindPhoneServiceImpl implements MemberBindPhoneService {
         MemberBindPhone memberBindPhone = new MemberBindPhone();
         memberBindPhone.setMemberId(memberId);
         memberBindPhone.setPhone(phone);
-       // memberBindPhone.setPassword(passwordEncoder.encode(password));
+        memberBindPhone.setPassword(passwordEncoder.encode(password));
         memberBindPhone.initDefault();
         return memberBindPhoneMapper.insert(memberBindPhone) > 0;
     }

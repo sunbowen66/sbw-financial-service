@@ -12,13 +12,14 @@ import com.sbw.finance.biz.domain.MemberBindWxOpenId;
 import com.sbw.finance.biz.dto.form.PhoneRegisterForm;
 import com.sbw.finance.biz.dto.vo.GenerateMpRegCodeVo;
 import com.sbw.finance.biz.enums.SmsCodeTypeEnum;
-import com.sbw.finance.biz.service.*;
+
 //import com.sbw.wx.config.WxConfig;
 //import com.sbw.wx.dto.AccessTokenResult;
 //import com.sbw.wx.dto.MpQrCodeCreateRequest;
 //import com.sbw.wx.dto.MpQrCodeCreateResult;
 //import com.sbw.wx.dto.MpSubscribeEventRequest;
 //import com.sbw.wx.service.WXService;
+import com.sbw.finance.biz.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
@@ -42,6 +43,8 @@ public class MemberRegServiceImpl implements MemberRegService {
     final MemberBindPhoneService memberBindPhoneService;
     final TransactionTemplate transactionTemplate;
     final TenantService tenantService;
+
+
     final MemberService memberService;
     //final WxConfig wxConfig;
     //final WXService wxService;
@@ -58,11 +61,13 @@ public class MemberRegServiceImpl implements MemberRegService {
      */
     @Override
     public long phoneReg(PhoneRegisterForm request) {
+        //判断密码和确认密码是否一致
         if (!Objects.equals(request.getPassword(), request.getConfirmPassword())) {
             throw new ParameterException("两次输入的密码不一致");
         }
+        //判断手机验证码和redis中的是否一致
         memberLoginService.checkSmsCode(request.getPhone(), request.getSmsCode(), SmsCodeTypeEnum.REG.getCode());
-
+        //分布式锁
         RLock rLock = redissonClient.getLock(RedisKeyConstant.PHONE_CHANGE + request.getPhone());
         try {
             rLock.lock();
@@ -71,13 +76,18 @@ public class MemberRegServiceImpl implements MemberRegService {
                 log.warn("手机号：{}已注册", request.getPhone());
                 throw new BizException("手机号已注册");
             }
+            //开启事务
             //将游客数据入口（保证数据一致性）
             Long memberId = transactionTemplate.execute(transactionStatus -> {
+                //创建租户
                 long tenantId = tenantService.add();
+                System.out.println("5555555555555555");
+                //创建会员
                 long id = memberService.reg(tenantId);
                 if (id <= 0) {
                     throw new BizException("注册异常");
                 }
+                //注册绑定手机会员表
                 memberBindPhoneService.reg(request.getPhone(), id, request.getPassword());
                 return id;
             });
