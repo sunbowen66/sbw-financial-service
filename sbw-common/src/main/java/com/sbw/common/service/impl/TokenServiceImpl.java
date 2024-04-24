@@ -1,30 +1,31 @@
 package com.sbw.common.service.impl;
 
-import com.sbw.common.config.SecurityConfig;
 import com.sbw.common.constant.CommonConstant;
 import com.sbw.common.dto.BaseUserInfoDTO;
 import com.sbw.common.dto.TokenResponse;
 import com.sbw.common.exception.BizException;
-import com.sbw.common.exception.LoginException;
 import com.sbw.common.service.TokenService;
 import com.sbw.common.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import com.sbw.common.config.SecurityConfig;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-
+import com.sbw.common.exception.LoginException;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+
+
 
 @ConditionalOnProperty(prefix = "sys",name = "enable-my-security",havingValue = "true")
 @Component
 @Slf4j
 @RequiredArgsConstructor
 public class TokenServiceImpl<T extends BaseUserInfoDTO> implements TokenService<T> {
-    ThreadLocal<T> userThreadLocal;
+    //ThreadLocal<T> userThreadLocal;
     final RedisTemplate<String, T> redisTemplate;
     final SecurityConfig securityConfig;
 
