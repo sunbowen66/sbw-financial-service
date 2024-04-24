@@ -1,7 +1,10 @@
 package com.sbw.finance.biz.service;
 
+import com.sbw.common.dto.TokenResponse;
 import com.sbw.finance.biz.dto.form.GetBase64CodeForm;
 import com.sbw.finance.biz.dto.form.GetSmsCodeForm;
+import com.sbw.finance.biz.dto.form.PhonePasswordLoginForm;
+import com.sbw.finance.biz.dto.form.PhoneSmsCodeLoginForm;
 
 public interface MemberLoginService {
     /**
@@ -51,7 +54,7 @@ public interface MemberLoginService {
      * @param form
      * @return
      */
-    //TokenResponse phonePasswordLogin(PhonePasswordLoginForm form);
+    TokenResponse phonePasswordLogin(PhonePasswordLoginForm form);
 
     /**
      * 手机短信登录
@@ -59,7 +62,7 @@ public interface MemberLoginService {
      * @param form
      * @return
      */
-   // TokenResponse phoneSmsCodeLogin(PhoneSmsCodeLoginForm form);
+    TokenResponse phoneSmsCodeLogin(PhoneSmsCodeLoginForm form);
 
     /**
      * 获取客户端token
@@ -67,5 +70,5 @@ public interface MemberLoginService {
      * @param clientId
      * @return
      */
-    //TokenResponse getClientToken(String clientId);
+    TokenResponse getClientToken(String clientId);
 }

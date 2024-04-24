@@ -19,7 +19,7 @@
 //import org.springframework.data.redis.core.RedisTemplate;
 //import org.springframework.stereotype.Service;
 //
-//import static com.bage.finance.biz.domain.SysConfigField.*;
+//import static com.sbw.finance.biz.domain.SysConfigField.*;
 //
 //@Service
 //@Slf4j

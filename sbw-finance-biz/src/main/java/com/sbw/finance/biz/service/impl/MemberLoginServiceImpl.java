@@ -3,24 +3,30 @@ package com.sbw.finance.biz.service.impl;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sbw.common.constant.ApiResponseCode;
+import com.sbw.common.dto.TokenResponse;
 import com.sbw.common.exception.BizException;
 import com.sbw.common.exception.ParameterException;
+import com.sbw.common.service.TokenService;
 import com.sbw.common.util.DateUtil;
 import com.sbw.common.util.MyUtil;
 import com.sbw.finance.biz.constant.RedisKeyConstant;
+import com.sbw.finance.biz.domain.Member;
 import com.sbw.finance.biz.domain.MemberBindPhone;
-import com.sbw.finance.biz.dto.form.GetBase64CodeForm;
-import com.sbw.finance.biz.dto.form.GetSmsCodeForm;
-import com.sbw.finance.biz.dto.form.SmsCodeResult;
+import com.sbw.finance.biz.dto.AdminDTO;
+import com.sbw.finance.biz.dto.form.*;
 import com.sbw.finance.biz.enums.SmsCodeTypeEnum;
 import com.sbw.finance.biz.service.MemberBindPhoneService;
 import com.sbw.finance.biz.service.MemberLoginService;
+import com.sbw.finance.biz.service.MemberService;
+import com.sbw.finance.biz.service.SmsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.Duration;
 import java.util.Set;
 import java.util.UUID;
@@ -40,8 +46,15 @@ import java.util.concurrent.TimeUnit;
 public class MemberLoginServiceImpl implements MemberLoginService {
 
     final RedisTemplate<String,Object> redisTemplate;
-
     final MemberBindPhoneService memberBindPhoneService;
+    final MemberService memberService;
+    final PasswordEncoder passwordEncoder;
+    final ObjectMapper jsonMapper;
+    final TokenService<AdminDTO> adminTokenService;
+    //final SmsService smsService;
+
+
+
 
     @Override
     public String getClientId() {
@@ -139,21 +152,22 @@ public class MemberLoginServiceImpl implements MemberLoginService {
      * @param form
      * @return
      */
-//    @Override
-//    public TokenResponse phonePasswordLogin(PhonePasswordLoginForm form) {
-//        checkBase64Code(form.getClientId(), form.getCode());
-//        MemberBindPhone memberBindPhone = memberBindPhoneService.getMemberByPhone(form.getPhone());
-//        if (memberBindPhone == null || Strings.isBlank(memberBindPhone.getPassword())) {
-//            throw new BizException(ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getCode(),
-//                    ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getMessage());
-//        }
-//        if (!passwordEncoder.matches(form.getPassword(), memberBindPhone.getPassword())) {
-//            throw new BizException(ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getCode(),
-//                    ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getMessage());
-//        }
-//        Member member = memberService.get(memberBindPhone.getMemberId());
-//        return loginSuccess(memberBindPhone.getMemberId(), member.getTenantId(), member.getSysRoleIds());
-//    }
+    @Override
+    public TokenResponse phonePasswordLogin(PhonePasswordLoginForm form) {
+        checkBase64Code(form.getClientId(), form.getCode());
+        MemberBindPhone memberBindPhone = memberBindPhoneService.getMemberByPhone(form.getPhone());
+        if (memberBindPhone == null || Strings.isBlank(memberBindPhone.getPassword())) {
+            throw new BizException(ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getCode(),
+                    ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getMessage());
+        }
+        if (!passwordEncoder.matches(form.getPassword(), memberBindPhone.getPassword())) {
+            throw new BizException(ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getCode(),
+                    ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getMessage());
+        }
+        //查询会员信息
+        Member member = memberService.get(memberBindPhone.getMemberId());
+        return loginSuccess(memberBindPhone.getMemberId(), member.getTenantId(), member.getSysRoleIds());
+    }
 
     /**
      * 手机短信登录
@@ -161,18 +175,18 @@ public class MemberLoginServiceImpl implements MemberLoginService {
      * @param form
      * @return
      */
-//    @Override
-//    public TokenResponse phoneSmsCodeLogin(PhoneSmsCodeLoginForm form) {
-//        checkSmsCode(form.getPhone(), form.getSmsCode(), SmsCodeTypeEnum.LOGIN.getCode());
-//        MemberBindPhone memberBindPhone = memberBindPhoneService.getMemberByPhone(form.getPhone());
-//        //手机号未注册
-//        if (memberBindPhone == null) {
-//            throw new ParameterException("phone",
-//                    "该手机号未注册");
-//        }
-//        Member member = memberService.get(memberBindPhone.getMemberId());
-//        return loginSuccess(memberBindPhone.getMemberId(), member.getTenantId(), member.getSysRoleIds());
-//    }
+    @Override
+    public TokenResponse phoneSmsCodeLogin(PhoneSmsCodeLoginForm form) {
+        checkSmsCode(form.getPhone(), form.getSmsCode(), SmsCodeTypeEnum.LOGIN.getCode());
+        MemberBindPhone memberBindPhone = memberBindPhoneService.getMemberByPhone(form.getPhone());
+        //手机号未注册
+        if (memberBindPhone == null) {
+            throw new ParameterException("phone",
+                    "该手机号未注册");
+        }
+        Member member = memberService.get(memberBindPhone.getMemberId());
+        return loginSuccess(memberBindPhone.getMemberId(), member.getTenantId(), member.getSysRoleIds());
+    }
 
     /**
      * 获取客户端token
@@ -180,23 +194,23 @@ public class MemberLoginServiceImpl implements MemberLoginService {
      * @param clientId
      * @return
      */
-//    @Override
-//    public TokenResponse getClientToken(String clientId) {
-//        return (TokenResponse) redisTemplate.opsForValue().get(RedisKeyConstant.CLIENT_TOKEN_KEY + clientId);
-//    }
-//
-//    private TokenResponse loginSuccess(long memberId, long tenantId, String sysRoleIds) {
-//        try {
-//            AdminDTO adminDTO = new AdminDTO();
-//            adminDTO.setId(memberId);
-//            adminDTO.setTenantId(tenantId);
-//            adminDTO.setSysRoleIds(jsonMapper.readValue(sysRoleIds, new TypeReference<Set<Long>>() {
-//            }));
-//            adminTokenService.setToken(adminDTO);
-////        redisTemplate.opsForValue().set(RedisKeyConstant.CLIENT_TOKEN_KEY + memberId, adminDTO.getToken(), 10, TimeUnit.MINUTES);
-//            return adminDTO.getToken();
-//        } catch (Exception ex) {
-//            throw new BizException("登录失败", ex);
-//        }
-//    }
+    @Override
+    public TokenResponse getClientToken(String clientId) {
+        return (TokenResponse) redisTemplate.opsForValue().get(RedisKeyConstant.CLIENT_TOKEN_KEY + clientId);
+    }
+
+    private TokenResponse loginSuccess(long memberId, long tenantId, String sysRoleIds) {
+        try {
+            AdminDTO adminDTO = new AdminDTO();
+            adminDTO.setId(memberId);
+            adminDTO.setTenantId(tenantId);
+            adminDTO.setSysRoleIds(jsonMapper.readValue(sysRoleIds, new TypeReference<Set<Long>>() {
+            }));
+            adminTokenService.setToken(adminDTO);
+//        redisTemplate.opsForValue().set(RedisKeyConstant.CLIENT_TOKEN_KEY + memberId, adminDTO.getToken(), 10, TimeUnit.MINUTES);
+            return adminDTO.getToken();
+        } catch (Exception ex) {
+            throw new BizException("登录失败", ex);
+        }
+    }
 }

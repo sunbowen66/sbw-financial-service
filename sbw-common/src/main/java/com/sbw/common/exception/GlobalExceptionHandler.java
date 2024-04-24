@@ -76,17 +76,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * 业务处理异常
+     * 登录异常
      *
      * @return ResponseEntity<ApiResponse>
      */
     @ExceptionHandler(LoginException.class)
-    public ResponseEntity<ApiResponse<Object>> apiErrorException(LoginException bizException) {
+    public ResponseEntity<ApiResponse<Object>> apiErrorException(LoginException loginException) {
         // 返回响应对象
         ApiResponse<Object> apiResponse = new ApiResponse<>();
         Map<String, String> errors = new HashMap<>();
-        errors.put(ApiResponseCode.LOGIN_ERROR.getMessage(), bizException.getMessage());
-        apiResponse.error(bizException.getCode(), errors);
+        errors.put(ApiResponseCode.LOGIN_ERROR.getMessage(), loginException.getMessage());
+        apiResponse.error(loginException.getCode(), errors);
         return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -76,7 +76,7 @@ public class MemberRegServiceImpl implements MemberRegService {
                 log.warn("手机号：{}已注册", request.getPhone());
                 throw new BizException("手机号已注册");
             }
-            //开启事务
+            //开启事务 编程事务
             //将游客数据入口（保证数据一致性）
             Long memberId = transactionTemplate.execute(transactionStatus -> {
                 //创建租户

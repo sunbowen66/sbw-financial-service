@@ -32,8 +32,6 @@ public class MemberServiceImpl implements MemberService {
      */
     @Override
     public long reg(long tenantId) {
-        System.out.println("------------------");
-        System.out.println(tenantId);
         Member member = new Member();
         member.setTenantId(tenantId);
         member.setSysRoleIds("[" + CommonConstant.ROLE_MEMBER + "]");

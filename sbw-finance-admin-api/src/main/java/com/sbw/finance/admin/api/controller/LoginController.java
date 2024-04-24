@@ -1,18 +1,15 @@
 package com.sbw.finance.admin.api.controller;
 
 import com.sbw.common.dto.ApiResponse;
-import com.sbw.finance.biz.dto.form.GetBase64CodeForm;
-import com.sbw.finance.biz.dto.form.GetSmsCodeForm;
+import com.sbw.common.dto.TokenResponse;
+import com.sbw.finance.biz.dto.form.*;
 import com.sbw.finance.biz.service.MemberLoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description 登录相关
@@ -55,4 +52,24 @@ public class LoginController {
         return ApiResponse.success();
     }
 
+    @ApiOperation(value = "手机密码登录")
+    @PostMapping(value = "/phonePasswordLogin")
+    public ApiResponse<TokenResponse> phonePasswordLogin(@Validated @RequestBody PhonePasswordLoginForm form) {
+        TokenResponse tokenResponse = memberLoginService.phonePasswordLogin(form);
+        return ApiResponse.success(tokenResponse);
+    }
+
+    @ApiOperation(value = "手机短信登录")
+    @PostMapping(value = "/phoneSmsCodeLogin")
+    public ApiResponse<TokenResponse> phoneSmsCodeLogin(@Validated @RequestBody PhoneSmsCodeLoginForm request) {
+        TokenResponse tokenResponse = memberLoginService.phoneSmsCodeLogin(request);
+        return ApiResponse.success(tokenResponse);
+    }
+
+    @ApiOperation(value = "获取客户端token")
+    @GetMapping(value = "/getClientToken")
+    public ApiResponse<TokenResponse> getClientToken(@Validated @ModelAttribute GetClientTokenForm request) {
+        TokenResponse result = memberLoginService.getClientToken(request.getClientId());
+        return ApiResponse.success(result);
+    }
 }
