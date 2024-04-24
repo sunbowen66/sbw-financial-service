@@ -32,14 +32,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @Description 登录相关功能
- * @ProjectName sbw-parent
- * @ClassName MemberLoginServiceImpl
- * @Date 2024/4/19 20:28
- * @Created By 孙博文
- * @Version 1.0.0
- */
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -191,13 +184,13 @@ public class MemberLoginServiceImpl implements MemberLoginService {
     /**
      * 获取客户端token
      *
-     * @param clientId
+     * @param
      * @return
      */
-    @Override
-    public TokenResponse getClientToken(String clientId) {
-        return (TokenResponse) redisTemplate.opsForValue().get(RedisKeyConstant.CLIENT_TOKEN_KEY + clientId);
-    }
+//    @Override
+//    public TokenResponse getClientToken(String clientId) {
+//        return (TokenResponse) redisTemplate.opsForValue().get(RedisKeyConstant.CLIENT_TOKEN_KEY + clientId);
+//    }
 
     private TokenResponse loginSuccess(long memberId, long tenantId, String sysRoleIds) {
         try {

@@ -66,10 +66,10 @@ public class LoginController {
         return ApiResponse.success(tokenResponse);
     }
 
-    @ApiOperation(value = "获取客户端token")
-    @GetMapping(value = "/getClientToken")
-    public ApiResponse<TokenResponse> getClientToken(@Validated @ModelAttribute GetClientTokenForm request) {
-        TokenResponse result = memberLoginService.getClientToken(request.getClientId());
-        return ApiResponse.success(result);
-    }
+//    @ApiOperation(value = "获取客户端token")
+//    @GetMapping(value = "/getClientToken")
+//    public ApiResponse<TokenResponse> getClientToken(@Validated @ModelAttribute GetClientTokenForm request) {
+//        TokenResponse result = memberLoginService.getClientToken(request.getClientId());
+//        return ApiResponse.success(result);
+//    }
 }

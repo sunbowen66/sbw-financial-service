@@ -70,5 +70,5 @@ public interface MemberLoginService {
      * @param clientId
      * @return
      */
-    TokenResponse getClientToken(String clientId);
+    //TokenResponse getClientToken(String clientId);
 }
