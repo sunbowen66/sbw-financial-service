@@ -26,10 +26,10 @@ public class RegController {
         return ApiResponse.success(memberRegService.phoneReg(form));
     }
 
-//    @ApiOperation(value = "生成微信公众号二维码（关注注册）")
-//    @GetMapping(value = "/generateMpRegCode")
-//    public ApiResponse<GenerateMpRegCodeVo> generateMpRegCode(@Validated @ModelAttribute GenerateMpRegCodeForm request) {
-//        GenerateMpRegCodeVo result = memberRegService.generateMpRegCode(request.getClientId());
-//        return ApiResponse.success(result);
-//    }
+    @ApiOperation(value = "生成微信公众号二维码（关注注册）")
+    @GetMapping(value = "/generateMpRegCode")
+    public ApiResponse<GenerateMpRegCodeVo> generateMpRegCode(@Validated @ModelAttribute GenerateMpRegCodeForm request) {
+        GenerateMpRegCodeVo result = memberRegService.generateMpRegCode(request.getClientId());
+        return ApiResponse.success(result);
+    }
 }

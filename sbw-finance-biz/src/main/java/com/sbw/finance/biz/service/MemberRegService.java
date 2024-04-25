@@ -21,7 +21,7 @@ public interface MemberRegService {
      *
      * @return
      */
-    //GenerateMpRegCodeVo generateMpRegCode(String clientId);
+    GenerateMpRegCodeVo generateMpRegCode(String clientId);
 
     //void handleMpSubscribeEventRequest(MpSubscribeEventRequest mpSubscribeEventRequest);
 

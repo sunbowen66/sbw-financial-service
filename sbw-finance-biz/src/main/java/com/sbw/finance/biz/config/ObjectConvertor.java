@@ -1,21 +1,21 @@
-//package com.sbw.finance.biz.config;
-//
-//import com.sbw.finance.biz.domain.*;
+package com.sbw.finance.biz.config;
+
+import com.sbw.finance.biz.domain.*;
 //import com.sbw.finance.biz.domain.es.VoucherDocuemt;
-//import com.sbw.finance.biz.dto.form.*;
-//import com.sbw.finance.biz.dto.vo.*;
-//import com.sbw.mybatis.help.PageInfo;
-//import com.sbw.wx.dto.MpQrCodeCreateResult;
-//import org.mapstruct.Mapper;
-//import org.mapstruct.Mapping;
-//import org.mapstruct.Mappings;
-//
-//import java.util.List;
-//
-//@Mapper(componentModel = "spring")
-//public interface ObjectConvertor {
-//    GenerateMpRegCodeVo toGenerateMpRegCodeResponse(MpQrCodeCreateResult source);
-//
+import com.sbw.finance.biz.dto.form.*;
+import com.sbw.finance.biz.dto.vo.*;
+import com.sbw.mybatis.help.PageInfo;
+import com.sbw.wx.dto.MpQrCodeCreateResult;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+
+import java.util.List;
+
+@Mapper(componentModel = "spring")
+public interface ObjectConvertor {
+    GenerateMpRegCodeVo toGenerateMpRegCodeResponse(MpQrCodeCreateResult source);
+
 //    @Mappings({@Mapping(target = "avatar", source = "avatarUrl")})
 //    CurrentInfoVo toCurrentInfoVo(Member source);
 //
@@ -151,4 +151,4 @@
 //    List<VoucherDocuemt.AssistCalculateDocument> toAssistCalculateES(List<VoucherSubjectAssistCalculateDetail> source);
 //
 //    List<ListMemberVo> toListMemberVo(List<Member> source);
-//}
+}

@@ -3,23 +3,21 @@ package com.sbw.finance.biz.service.impl;
 //import com.sbw.common.dto.TokenResponse;
 import com.sbw.common.exception.BizException;
 import com.sbw.common.exception.ParameterException;
-//import com.sbw.common.service.TokenService;
-//import com.sbw.finance.biz.config.ObjectConvertor;
+import com.sbw.finance.biz.config.ObjectConvertor;
+import com.sbw.common.service.TokenService;
 import com.sbw.finance.biz.constant.RedisKeyConstant;
 import com.sbw.finance.biz.domain.MemberBindPhone;
 import com.sbw.finance.biz.domain.MemberBindWxOpenId;
-//import com.sbw.finance.biz.dto.AdminDTO;
+import com.sbw.finance.biz.dto.AdminDTO;
 import com.sbw.finance.biz.dto.form.PhoneRegisterForm;
 import com.sbw.finance.biz.dto.vo.GenerateMpRegCodeVo;
 import com.sbw.finance.biz.enums.SmsCodeTypeEnum;
-
-//import com.sbw.wx.config.WxConfig;
-//import com.sbw.wx.dto.AccessTokenResult;
-//import com.sbw.wx.dto.MpQrCodeCreateRequest;
-//import com.sbw.wx.dto.MpQrCodeCreateResult;
-//import com.sbw.wx.dto.MpSubscribeEventRequest;
-//import com.sbw.wx.service.WXService;
 import com.sbw.finance.biz.service.*;
+import com.sbw.wx.config.WxConfig;
+import com.sbw.wx.dto.AccessTokenResult;
+import com.sbw.wx.dto.MpQrCodeCreateRequest;
+import com.sbw.wx.dto.MpQrCodeCreateResult;
+import com.sbw.wx.service.WXService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
@@ -46,11 +44,11 @@ public class MemberRegServiceImpl implements MemberRegService {
 
 
     final MemberService memberService;
-    //final WxConfig wxConfig;
-    //final WXService wxService;
-    //final ObjectConvertor objectConvertor;
+    final WxConfig wxConfig;
+    final WXService wxService;
+    final ObjectConvertor objectConvertor;
     final RedisTemplate<String, Object> redisTemplate;
-    //final TokenService<AdminDTO> adminTokenService;
+    final TokenService<AdminDTO> adminTokenService;
     //final MemberBindWxOpenIdService memberBindWxOpenIdService;
 
     /**
@@ -108,19 +106,20 @@ public class MemberRegServiceImpl implements MemberRegService {
      * @param clientId
      * @return
      */
-//    @Override
-//    public GenerateMpRegCodeVo generateMpRegCode(String clientId) {
-//        AccessTokenResult accessTokenResult = wxService.getMpAccessTokenByCache(wxConfig.getMp().getAppId());
-//        MpQrCodeCreateRequest request = new MpQrCodeCreateRequest();
-//        request.setExpireSeconds(wxConfig.getMp().getCodeExpire());
-//        request.setActionName("QR_STR_SCENE");
-//        request.setActionInfo(request.new ActionInfo());
-//        request.getActionInfo().setScene(request.new scene());
-//        request.getActionInfo().getScene().setSceneStr("ScanReg_" + wxConfig.getMp().getAppId() + "_" + clientId);
-//        MpQrCodeCreateResult result = wxService.createMpQrcodeCreate(accessTokenResult.getAccessToken(), request);
-//
-//        return objectConvertor.toGenerateMpRegCodeResponse(result);
-//    }
+    @Override
+    public GenerateMpRegCodeVo generateMpRegCode(String clientId) {
+        //AccessTokenResult accessTokenResult = wxService.getMpAccessTokenByCache(wxConfig.getMp().getAppId());
+        AccessTokenResult accessTokenResult = wxService.getMpAccessToken(wxConfig.getMp().getAppId(),wxConfig.getMp().getSecret());
+        MpQrCodeCreateRequest request = new MpQrCodeCreateRequest();
+        request.setExpireSeconds(wxConfig.getMp().getCodeExpire());
+        request.setActionName("QR_STR_SCENE");
+        request.setActionInfo(request.new ActionInfo());
+        request.getActionInfo().setScene(request.new scene());
+        request.getActionInfo().getScene().setSceneStr("ScanReg_" + wxConfig.getMp().getAppId() + "_" + clientId);
+        MpQrCodeCreateResult result = wxService.createMpQrcodeCreate(accessTokenResult.getAccessToken(), request);
+
+        return objectConvertor.toGenerateMpRegCodeResponse(result);
+    }
 
 //    @EventListener
 //    @Override
