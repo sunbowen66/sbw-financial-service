@@ -76,30 +76,37 @@ public class MemberLoginServiceImpl implements MemberLoginService {
     public void sendSmsCode(GetSmsCodeForm form) {
         //校验图形验证码
         checkBase64Code(form.getClientId(), form.getCode());
-        //
+        //校验redis中是否存在验证码
         String key = RedisKeyConstant.SMS_CODE + form.getSmsCodeType() + form.getPhone();
         SmsCodeResult smsCodeResult = (SmsCodeResult) redisTemplate.opsForValue().get(key);
         log.info(String.valueOf(smsCodeResult));
-
         if (smsCodeResult != null) {
             Duration duration = DateUtil.getDuration(smsCodeResult.getGetTime(), DateUtil.getSystemTime());
             if (duration.getSeconds() < 60) {
                 throw new BizException("验证码获取太频繁，请稍后重试");
             }
         }
+
+        //查询绑定手机表中该手机号是否注册
        MemberBindPhone memberBindPhone = memberBindPhoneService.getMemberByPhone(form.getPhone());
+        //如果为注册请求，表中存在数据
        if (form.getSmsCodeType().equals(SmsCodeTypeEnum.REG.getCode()) && memberBindPhone != null) {
            throw new ParameterException("phone", "该手机号已注册！");
        }
+       //如果为登录请求，表中存在数据
        if (form.getSmsCodeType().equals(SmsCodeTypeEnum.LOGIN.getCode()) && memberBindPhone == null) {
            throw new ParameterException("phone", "该手机号未注册！");
        }
+       //生成一个6位的随机数
         int smsCode = MyUtil.getRandom(6);
+
+       //将验证码，当前时间存入redis中
         smsCodeResult = new SmsCodeResult();
         smsCodeResult.setCode(String.valueOf(smsCode));
         smsCodeResult.setGetTime(DateUtil.getSystemTime());
         redisTemplate.opsForValue().set(key, smsCodeResult, 15, TimeUnit.MINUTES);
         log.info("客户端id{},手机号：{},短信验证码：{}", form.getClientId(), form.getPhone(), smsCode);
+        //todo 调用短信发送接口
         //smsService.sendSmsCode(form.getPhone(), smsCodeResult.getCode(), form.getSmsCodeType());
     }
 
@@ -147,12 +154,16 @@ public class MemberLoginServiceImpl implements MemberLoginService {
      */
     @Override
     public TokenResponse phonePasswordLogin(PhonePasswordLoginForm form) {
+        //校验图形验证码
         checkBase64Code(form.getClientId(), form.getCode());
+        //查询手机绑定表中手机号是否存在
         MemberBindPhone memberBindPhone = memberBindPhoneService.getMemberByPhone(form.getPhone());
+        //手机号不存在或者密码为空
         if (memberBindPhone == null || Strings.isBlank(memberBindPhone.getPassword())) {
             throw new BizException(ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getCode(),
                     ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getMessage());
         }
+        //
         if (!passwordEncoder.matches(form.getPassword(), memberBindPhone.getPassword())) {
             throw new BizException(ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getCode(),
                     ApiResponseCode.ACCOUNT_PASSWORD_ERROR.getMessage());
@@ -187,10 +198,10 @@ public class MemberLoginServiceImpl implements MemberLoginService {
      * @param
      * @return
      */
-//    @Override
-//    public TokenResponse getClientToken(String clientId) {
-//        return (TokenResponse) redisTemplate.opsForValue().get(RedisKeyConstant.CLIENT_TOKEN_KEY + clientId);
-//    }
+    @Override
+    public TokenResponse getClientToken(String clientId) {
+        return (TokenResponse) redisTemplate.opsForValue().get(RedisKeyConstant.CLIENT_TOKEN_KEY + clientId);
+    }
 
     private TokenResponse loginSuccess(long memberId, long tenantId, String sysRoleIds) {
         try {

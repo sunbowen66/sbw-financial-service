@@ -2,8 +2,10 @@ package com.sbw.finance.biz.service;
 
 
 //import com.sbw.common.dto.TokenResponse;
+import com.sbw.common.dto.TokenResponse;
 import com.sbw.finance.biz.dto.form.PhoneRegisterForm;
 import com.sbw.finance.biz.dto.vo.GenerateMpRegCodeVo;
+import com.sbw.wx.dto.MpSubscribeEventRequest;
 //import com.sbw.wx.dto.MpSubscribeEventRequest;
 
 public interface MemberRegService {
@@ -23,9 +25,9 @@ public interface MemberRegService {
      */
     GenerateMpRegCodeVo generateMpRegCode(String clientId);
 
-    //void handleMpSubscribeEventRequest(MpSubscribeEventRequest mpSubscribeEventRequest);
+    void handleMpSubscribeEventRequest(MpSubscribeEventRequest mpSubscribeEventRequest);
 
-    //TokenResponse registerByMpOpenId(String appId, String clientId, String openId);
+    TokenResponse registerByMpOpenId(String appId, String clientId, String openId);
 
     /**
      * 扫描注册
@@ -34,5 +36,5 @@ public interface MemberRegService {
      * @param openId
      * @return
      */
-    //long scReg(String appId, String openId);
+    long scReg(String appId, String openId);
 }
