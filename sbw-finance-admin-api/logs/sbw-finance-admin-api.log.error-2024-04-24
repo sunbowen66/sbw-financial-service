@@ -1,0 +1,355 @@
+2024-04-24 20:43:30.192 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 20:44:22.108 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 20:47:35.527 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 20:50:43.548 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:01:20.945 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:02:14.654 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:08:44.872 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:11:03.738 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:12:59.413 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:18:53.748 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:20:13.224 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:20:25.551 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:21:41.111 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:29:16.773 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:30:19.540 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:31:11.116 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 21:32:12.794 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field adminTokenService in com.sbw.finance.biz.service.impl.MemberLoginServiceImpl required a bean of type 'com.sbw.common.service.TokenService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sbw.common.service.TokenService' in your configuration.
+
+2024-04-24 22:09:43.997 [http-nio-8091-exec-1] ERROR c.s.c.e.GlobalExceptionHandler - ParameterException:
+org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.sbw.common.dto.ApiResponse<com.sbw.common.dto.TokenResponse> com.sbw.finance.admin.api.controller.LoginController.phoneSmsCodeLogin(com.sbw.finance.biz.dto.form.PhoneSmsCodeLoginForm) with 2 errors: [Field error in object 'phoneSmsCodeLoginForm' on field 'smsCode': rejected value []; codes [Pattern.phoneSmsCodeLoginForm.smsCode,Pattern.smsCode,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [phoneSmsCodeLoginForm.smsCode,smsCode]; arguments []; default message [smsCode],[Ljavax.validation.constraints.Pattern$Flag;@6bf5df1a,^[0-9]{6}$]; default message [短信验证码格式不正确]] [Field error in object 'phoneSmsCodeLoginForm' on field 'smsCode': rejected value []; codes [NotBlank.phoneSmsCodeLoginForm.smsCode,NotBlank.smsCode,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [phoneSmsCodeLoginForm.smsCode,smsCode]; arguments []; default message [smsCode]]; default message [请输入短信验证码]] 
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:141)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2024-04-24 22:09:49.143 [http-nio-8091-exec-10] ERROR c.s.c.e.GlobalExceptionHandler - ParameterException:
+org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.sbw.common.dto.ApiResponse<com.sbw.common.dto.TokenResponse> com.sbw.finance.admin.api.controller.LoginController.phoneSmsCodeLogin(com.sbw.finance.biz.dto.form.PhoneSmsCodeLoginForm): [Field error in object 'phoneSmsCodeLoginForm' on field 'smsCode': rejected value [www]; codes [Pattern.phoneSmsCodeLoginForm.smsCode,Pattern.smsCode,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [phoneSmsCodeLoginForm.smsCode,smsCode]; arguments []; default message [smsCode],[Ljavax.validation.constraints.Pattern$Flag;@6bf5df1a,^[0-9]{6}$]; default message [短信验证码格式不正确]] 
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:141)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
