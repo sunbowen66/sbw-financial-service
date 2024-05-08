@@ -21,7 +21,6 @@ public class TenantServiceImpl implements TenantService {
      */
     @Override
     public long add() {
-        System.out.println("666666666666");
         Tenant tenant = new Tenant();
         tenant.initDefault();
         if (tenantMapper.insert(tenant) == 0) {

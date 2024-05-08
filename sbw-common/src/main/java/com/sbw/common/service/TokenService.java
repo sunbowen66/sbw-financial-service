@@ -9,7 +9,7 @@ public interface TokenService<T> {
      * @param tokenResponse
      * @return
      */
-    //boolean isRefreshToken(TokenResponse tokenResponse);
+    boolean isRefreshToken(TokenResponse tokenResponse);
 
     /**
      * 1、检验token
@@ -17,7 +17,7 @@ public interface TokenService<T> {
      * @param token
      * @return
      */
-    //T checkToken(String token);
+    T checkToken(String token);
 
     /**
      * 设置token
@@ -31,19 +31,19 @@ public interface TokenService<T> {
      *
      * @return
      */
-    //T getThreadLocalUser();
+    T getThreadLocalUser();
 
     /**
      * 设置用户信息
      *
      * @param userInfo
      */
-    //void setThreadLocalUser(T userInfo);
+    void setThreadLocalUser(T userInfo);
 
     /**
      * 删除本地用户
      */
-    //void removeThreadLocalUser();
+    void removeThreadLocalUser();
 
     /**
      * 获取用户信息
@@ -51,26 +51,26 @@ public interface TokenService<T> {
      * @param token
      * @return
      */
-    //T getRedisUser(String token);
+    T getRedisUser(String token);
 
     /**
      * 获取用户id
      *
      * @return
      */
-    //Long getThreadLocalUserId();
+    Long getThreadLocalUserId();
 
     /**
      * 获取租户id
      *
      * @return
      */
-    //Long getThreadLocalTenantId();
+    Long getThreadLocalTenantId();
 
     /**
      * 清除token
      *
      * @return
      */
-    //void clearToken();
+    void clearToken();
 }

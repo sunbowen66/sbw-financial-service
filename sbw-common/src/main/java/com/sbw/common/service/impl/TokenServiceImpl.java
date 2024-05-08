@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RequiredArgsConstructor
 public class TokenServiceImpl<T extends BaseUserInfoDTO> implements TokenService<T> {
-    //ThreadLocal<T> userThreadLocal;
+    ThreadLocal<T> userThreadLocal;
     final RedisTemplate<String, T> redisTemplate;
     final SecurityConfig securityConfig;
 
@@ -35,25 +35,25 @@ public class TokenServiceImpl<T extends BaseUserInfoDTO> implements TokenService
      * @param tokenResponse
      * @return
      */
-//    @Override
-//    public boolean isRefreshToken(TokenResponse tokenResponse) {
-//        if (Objects.isNull(tokenResponse)) {
-//            throw new BizException("token无效或已过期");
-//        }
-//        //求token还剩多久过期
-//        long expireTime = tokenResponse.getExpireDateTime() - DateUtil.getSecondTimeStamp();
-//        if (expireTime <= 0) {
-//            throw new BizException("token过期");
-//        }
-//
-//        //求token已经使用了多长时间
-//        long useTime = tokenResponse.getExpire() - expireTime;
-//        //token使用时间超过三分之一则刷新
-//        if (useTime > (tokenResponse.getExpire() / 3)) {
-//            return true;
-//        }
-//        return false;
-//    }
+    @Override
+    public boolean isRefreshToken(TokenResponse tokenResponse) {
+        if (Objects.isNull(tokenResponse)) {
+            throw new BizException("token无效或已过期");
+        }
+        //求token还剩多久过期
+        long expireTime = tokenResponse.getExpireDateTime() - DateUtil.getSecondTimeStamp();
+        if (expireTime <= 0) {
+            throw new BizException("token过期");
+        }
+
+        //求token已经使用了多长时间
+        long useTime = tokenResponse.getExpire() - expireTime;
+        //token使用时间超过三分之一则刷新
+        if (useTime > (tokenResponse.getExpire() / 3)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * 1、检验token
@@ -62,22 +62,22 @@ public class TokenServiceImpl<T extends BaseUserInfoDTO> implements TokenService
      * @param token
      * @return
      */
-//    @Override
-//    public T checkToken(String token) {
-//        if (Strings.isBlank(token)) {
-//            throw new BizException("token非法");
-//        }
-//        T userInfo = redisTemplate.opsForValue().get(CommonConstant.TOKEN_CACHE_KEY + token);
-//        if (Objects.isNull(userInfo)) {
-//            throw new BizException("token不存在或已过期");
-//        }
-//        boolean isRefresh = isRefreshToken(userInfo.getToken());
-//        if (isRefresh) {
-//            userInfo.getToken().setExpireDateTime(DateUtil.getExpireTimeStamp(userInfo.getToken().getExpire(), TimeUnit.DAYS));
-//            redisTemplate.opsForValue().set(CommonConstant.TOKEN_CACHE_KEY + userInfo.getToken().getToken(), userInfo, userInfo.getToken().getExpire(), userInfo.getToken().getTimeUnit());
-//        }
-//        return userInfo;
-//    }
+    @Override
+    public T checkToken(String token) {
+        if (Strings.isBlank(token)) {
+            throw new BizException("token非法");
+        }
+        T userInfo = redisTemplate.opsForValue().get(CommonConstant.TOKEN_CACHE_KEY + token);
+        if (Objects.isNull(userInfo)) {
+            throw new BizException("token不存在或已过期");
+        }
+        boolean isRefresh = isRefreshToken(userInfo.getToken());
+        if (isRefresh) {
+            userInfo.getToken().setExpireDateTime(DateUtil.getExpireTimeStamp(userInfo.getToken().getExpire(), TimeUnit.DAYS));
+            redisTemplate.opsForValue().set(CommonConstant.TOKEN_CACHE_KEY + userInfo.getToken().getToken(), userInfo, userInfo.getToken().getExpire(), userInfo.getToken().getTimeUnit());
+        }
+        return userInfo;
+    }
 
     /**
      * 设置token
@@ -108,36 +108,36 @@ public class TokenServiceImpl<T extends BaseUserInfoDTO> implements TokenService
      *
      * @return
      */
-//    @Override
-//    public T getThreadLocalUser() {
-//        if (userThreadLocal == null) {
-//            return null;
-//        }
-//        return userThreadLocal.get();
-//    }
+    @Override
+    public T getThreadLocalUser() {
+        if (userThreadLocal == null) {
+            return null;
+        }
+        return userThreadLocal.get();
+    }
 
     /**
      * 设置用户信息
      *
      * @param userInfo
      */
-//    @Override
-//    public void setThreadLocalUser(T userInfo) {
-//        if (Objects.isNull(userThreadLocal)) {
-//            userThreadLocal = new ThreadLocal<>();
-//        }
-//        userThreadLocal.set(userInfo);
-//    }
+    @Override
+    public void setThreadLocalUser(T userInfo) {
+        if (Objects.isNull(userThreadLocal)) {
+            userThreadLocal = new ThreadLocal<>();
+        }
+        userThreadLocal.set(userInfo);
+    }
 
     /**
      * 删除本地用户
      */
-//    @Override
-//    public void removeThreadLocalUser() {
-//        if (Objects.nonNull(userThreadLocal)) {
-//            userThreadLocal.remove();
-//        }
-//    }
+    @Override
+    public void removeThreadLocalUser() {
+        if (Objects.nonNull(userThreadLocal)) {
+            userThreadLocal.remove();
+        }
+    }
 
     /**
      * 获取用户信息
@@ -145,57 +145,57 @@ public class TokenServiceImpl<T extends BaseUserInfoDTO> implements TokenService
      * @param token
      * @return
      */
-//    @Override
-//    public T getRedisUser(String token) {
-//        T object = redisTemplate.opsForValue().get(CommonConstant.USER_CACHE_KEY + token);
-//        if (Objects.nonNull(object)) {
-//            return object;
-//        }
-//        throw new LoginException("获取用户信息异常");
-//    }
+    @Override
+    public T getRedisUser(String token) {
+        T object = redisTemplate.opsForValue().get(CommonConstant.USER_CACHE_KEY + token);
+        if (Objects.nonNull(object)) {
+            return object;
+        }
+        throw new LoginException("获取用户信息异常");
+    }
 
     /**
      * 获取用户id
      *
      * @return
      */
-//    @Override
-//    public Long getThreadLocalUserId() {
-//        T user = getThreadLocalUser();
-//        if (Objects.nonNull(user) && user.getId() != null && user.getId() > 0) {
-//            return user.getId();
-//        }
-//        throw new LoginException("获取用户id异常");
-//    }
+    @Override
+    public Long getThreadLocalUserId() {
+        T user = getThreadLocalUser();
+        if (Objects.nonNull(user) && user.getId() != null && user.getId() > 0) {
+            return user.getId();
+        }
+        throw new LoginException("获取用户id异常");
+    }
 
     /**
      * 获取租户id
      *
      * @return
      */
-//    @Override
-//    public Long getThreadLocalTenantId() {
-//        T user = getThreadLocalUser();
-//        if (Objects.nonNull(user) && user.getTenantId() != null && user.getTenantId() > 0) {
-//            return user.getTenantId();
-//        }
-//        throw new LoginException("获取租户id异常");
-//    }
+    @Override
+    public Long getThreadLocalTenantId() {
+        T user = getThreadLocalUser();
+        if (Objects.nonNull(user) && user.getTenantId() != null && user.getTenantId() > 0) {
+            return user.getTenantId();
+        }
+        throw new LoginException("获取租户id异常");
+    }
 
     /**
      * 清除token
      *
      * @return
      */
-//    @Override
-//    public void clearToken() {
-//        T user = getThreadLocalUser();
-//        if (user == null || user.getToken() == null
-//                || Strings.isBlank(user.getToken().getToken())) {
-//            return;
-//        }
-//        String key = CommonConstant.TOKEN_CACHE_KEY + user.getToken().getToken();
-//        redisTemplate.delete(key);
-//        log.info("删除token：{}成功，用户id：{}", user.getToken().getToken(), user.getId());
-//    }
+    @Override
+    public void clearToken() {
+        T user = getThreadLocalUser();
+        if (user == null || user.getToken() == null
+                || Strings.isBlank(user.getToken().getToken())) {
+            return;
+        }
+        String key = CommonConstant.TOKEN_CACHE_KEY + user.getToken().getToken();
+        redisTemplate.delete(key);
+        log.info("删除token：{}成功，用户id：{}", user.getToken().getToken(), user.getId());
+    }
 }

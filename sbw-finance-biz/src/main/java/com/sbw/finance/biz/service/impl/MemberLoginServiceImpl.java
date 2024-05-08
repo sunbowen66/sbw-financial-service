@@ -61,7 +61,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
         //将图形验证码存到redis缓存中
         redisTemplate.opsForValue().set(RedisKeyConstant.GRAPHIC_VERIFICATION_CODE +form.getClientId()
                 ,code,15, TimeUnit.MINUTES);
-        log.info("图形验证码  "+code);
+        log.info("图形验证码: {}",code);
         return lineCaptcha.getImageBase64();
     }
 

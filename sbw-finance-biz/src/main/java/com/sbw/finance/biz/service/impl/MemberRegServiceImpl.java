@@ -81,7 +81,6 @@ public class MemberRegServiceImpl implements MemberRegService {
             Long memberId = transactionTemplate.execute(transactionStatus -> {
                 //创建租户
                 long tenantId = tenantService.add();
-                System.out.println("5555555555555555");
                 //创建会员
                 long id = memberService.reg(tenantId);
                 if (id <= 0) {
@@ -110,8 +109,8 @@ public class MemberRegServiceImpl implements MemberRegService {
      */
     @Override
     public GenerateMpRegCodeVo generateMpRegCode(String clientId) {
-        //AccessTokenResult accessTokenResult = wxService.getMpAccessTokenByCache(wxConfig.getMp().getAppId());
-        AccessTokenResult accessTokenResult = wxService.getMpAccessToken(wxConfig.getMp().getAppId(),wxConfig.getMp().getSecret());
+        AccessTokenResult accessTokenResult = wxService.getMpAccessTokenByCache(wxConfig.getMp().getAppId());
+        //AccessTokenResult accessTokenResult = wxService.getMpAccessToken(wxConfig.getMp().getAppId(),wxConfig.getMp().getSecret());
         MpQrCodeCreateRequest request = new MpQrCodeCreateRequest();
         request.setExpireSeconds(wxConfig.getMp().getCodeExpire());
         request.setActionName("QR_STR_SCENE");

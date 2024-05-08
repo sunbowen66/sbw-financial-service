@@ -28,5 +28,8 @@ public class SecurityConfig {
      * 默认1个小时
      */
     private Integer expire = 3600;
+    /**
+     * 白名单
+     */
     private List<String> ignores;
 }
