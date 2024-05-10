@@ -36,12 +36,12 @@ public interface MemberBindPhoneService {
      * @param memberId
      * @return
      */
-   // MemberBindPhone getById(long memberId);
+    MemberBindPhone getById(long memberId);
 
     /**
      * 修改手机号
      * @param form
      * @return
      */
-    //boolean updatePhone(UpdatePhoneForm form);
+    boolean updatePhone(UpdatePhoneForm form);
 }

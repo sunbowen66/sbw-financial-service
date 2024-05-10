@@ -1,7 +1,7 @@
 package com.sbw.finance.biz.service;
 
 
-//import com.sbw.finance.biz.domain.SysResource;
+import com.sbw.finance.biz.domain.SysResource;
 import com.sbw.finance.biz.dto.form.*;
 import com.sbw.finance.biz.dto.vo.*;
 
@@ -63,5 +63,5 @@ public interface SysResourceService {
      * @param ids
      * @return
      */
-    //List<SysResource> listByIds(List<Integer> ids);
+    List<SysResource> listByIds(List<Integer> ids);
 }

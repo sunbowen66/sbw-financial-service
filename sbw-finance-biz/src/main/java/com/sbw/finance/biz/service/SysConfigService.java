@@ -1,7 +1,7 @@
 package com.sbw.finance.biz.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.sbw.finance.biz.dto.SmsTemplateDTO;
+import com.sbw.finance.biz.dto.SmsTemplateDTO;
 import com.sbw.finance.biz.dto.form.SaveSendSmsCodeTemplateConfigForm;
 
 public interface SysConfigService {
@@ -19,5 +19,5 @@ public interface SysConfigService {
      * @param configKey
      * @return
      */
-    //SmsTemplateDTO getSmsTemplateByCache(String configKey);
+    SmsTemplateDTO getSmsTemplateByCache(String configKey);
 }

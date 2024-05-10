@@ -3,8 +3,10 @@ package com.sbw.finance.biz.service.impl;
 import com.sbw.common.exception.BizException;
 import com.sbw.common.exception.ParameterException;
 //import com.sbw.common.service.TokenService;
+import com.sbw.common.service.TokenService;
 import com.sbw.finance.biz.domain.MemberBindPhone;
 //import com.sbw.finance.biz.dto.AdminDTO;
+import com.sbw.finance.biz.dto.AdminDTO;
 import com.sbw.finance.biz.dto.form.UpdatePasswordForm;
 import com.sbw.finance.biz.dto.form.UpdatePhoneForm;
 import com.sbw.finance.biz.mapper.MemberBindPhoneMapper;
@@ -25,7 +27,7 @@ import static com.sbw.finance.biz.domain.MemberBindPhoneField.*;
 public class MemberBindPhoneServiceImpl implements MemberBindPhoneService {
     final MemberBindPhoneMapper memberBindPhoneMapper;
     final PasswordEncoder passwordEncoder;
-//    final TokenService<AdminDTO> tokenService;
+    final TokenService<AdminDTO> tokenService;
 
     /**
      * 根据手机号获取用户信息
@@ -69,29 +71,29 @@ public class MemberBindPhoneServiceImpl implements MemberBindPhoneService {
      */
     @Override
     public boolean updatePassword(UpdatePasswordForm form) {
-//        if (!Objects.equals(form.getPassword(), form.getConfirmPassword())) {
-//            throw new ParameterException("两次输入的密码不一致");
-//        }
-//        MemberBindPhone memberBindPhone = getById(tokenService.getThreadLocalUserId());
-//        if (memberBindPhone == null) {
-//            throw new BizException("账号信息不存在");
-//        }
-//        if (memberBindPhone.getDisable()) {
-//            throw new BizException("账号已被禁用，无法修改密码");
-//        }
-//        if (!passwordEncoder.matches(form.getOldPassword(), memberBindPhone.getPassword())) {
-//            throw new BizException("旧密码不正确");
-//        }
-//        String newPassword = passwordEncoder.encode(form.getPassword());
-//        MyBatisWrapper<MemberBindPhone> wrapper = new MyBatisWrapper<>();
-//        wrapper.update(setPassword(newPassword))
-//                .whereBuilder()
-//                .andEq(setMemberId(tokenService.getThreadLocalUserId()))
-//                .andEq(setDisable(false));
-//        if (memberBindPhoneMapper.updateField(wrapper) == 0) {
-//            throw new BizException("密码修改失败");
-//        }
-//        tokenService.clearToken();
+        if (!Objects.equals(form.getPassword(), form.getConfirmPassword())) {
+            throw new ParameterException("两次输入的密码不一致");
+        }
+        MemberBindPhone memberBindPhone = getById(tokenService.getThreadLocalUserId());
+        if (memberBindPhone == null) {
+            throw new BizException("账号信息不存在");
+        }
+        if (memberBindPhone.getDisable()) {
+            throw new BizException("账号已被禁用，无法修改密码");
+        }
+        if (!passwordEncoder.matches(form.getOldPassword(), memberBindPhone.getPassword())) {
+            throw new BizException("旧密码不正确");
+        }
+        String newPassword = passwordEncoder.encode(form.getPassword());
+        MyBatisWrapper<MemberBindPhone> wrapper = new MyBatisWrapper<>();
+        wrapper.update(setPassword(newPassword))
+                .whereBuilder()
+                .andEq(setMemberId(tokenService.getThreadLocalUserId()))
+                .andEq(setDisable(false));
+        if (memberBindPhoneMapper.updateField(wrapper) == 0) {
+            throw new BizException("密码修改失败");
+        }
+        tokenService.clearToken();
         return true;
     }
 
@@ -101,14 +103,14 @@ public class MemberBindPhoneServiceImpl implements MemberBindPhoneService {
      * @param memberId
      * @return
      */
-//    @Override
-//    public MemberBindPhone getById(long memberId) {
-//        MyBatisWrapper<MemberBindPhone> wrapper = new MyBatisWrapper<>();
-//        wrapper.select(Password, Disable)
-//                .whereBuilder()
-//                .andEq(setMemberId(tokenService.getThreadLocalUserId()));
-//        return memberBindPhoneMapper.get(wrapper);
-//    }
+    @Override
+    public MemberBindPhone getById(long memberId) {
+        MyBatisWrapper<MemberBindPhone> wrapper = new MyBatisWrapper<>();
+        wrapper.select(Password, Disable)
+                .whereBuilder()
+                .andEq(setMemberId(tokenService.getThreadLocalUserId()));
+        return memberBindPhoneMapper.get(wrapper);
+    }
 
     /**
      * 修改手机号
@@ -116,13 +118,13 @@ public class MemberBindPhoneServiceImpl implements MemberBindPhoneService {
      * @param form
      * @return
      */
-//    @Override
-//    public boolean updatePhone(UpdatePhoneForm form) {
-//        MyBatisWrapper<MemberBindPhone> wrapper = new MyBatisWrapper<>();
-//        wrapper.update(setPhone(form.getPhone()))
-//                .whereBuilder()
-//                .andEq(setMemberId(tokenService.getThreadLocalUserId()))
-//                .andEq(setDisable(false));
-//        return memberBindPhoneMapper.updateField(wrapper) > 0;
-//    }
+    @Override
+    public boolean updatePhone(UpdatePhoneForm form) {
+        MyBatisWrapper<MemberBindPhone> wrapper = new MyBatisWrapper<>();
+        wrapper.update(setPhone(form.getPhone()))
+                .whereBuilder()
+                .andEq(setMemberId(tokenService.getThreadLocalUserId()))
+                .andEq(setDisable(false));
+        return memberBindPhoneMapper.updateField(wrapper) > 0;
+    }
 }

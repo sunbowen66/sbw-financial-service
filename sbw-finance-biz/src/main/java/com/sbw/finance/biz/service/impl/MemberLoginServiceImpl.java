@@ -44,7 +44,7 @@ public class MemberLoginServiceImpl implements MemberLoginService {
     final PasswordEncoder passwordEncoder;
     final ObjectMapper jsonMapper;
     final TokenService<AdminDTO> adminTokenService;
-    //final SmsService smsService;
+    final SmsService smsService;
 
 
 
@@ -106,8 +106,8 @@ public class MemberLoginServiceImpl implements MemberLoginService {
         smsCodeResult.setGetTime(DateUtil.getSystemTime());
         redisTemplate.opsForValue().set(key, smsCodeResult, 15, TimeUnit.MINUTES);
         log.info("客户端id{},手机号：{},短信验证码：{}", form.getClientId(), form.getPhone(), smsCode);
-        //todo 调用短信发送接口
-        //smsService.sendSmsCode(form.getPhone(), smsCodeResult.getCode(), form.getSmsCodeType());
+        //调用短信发送接口
+        smsService.sendSmsCode(form.getPhone(), smsCodeResult.getCode(), form.getSmsCodeType());
     }
 
     /**

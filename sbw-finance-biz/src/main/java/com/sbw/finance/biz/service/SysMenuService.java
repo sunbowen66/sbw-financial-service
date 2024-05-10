@@ -1,6 +1,6 @@
 package com.sbw.finance.biz.service;
 
-//import com.sbw.finance.biz.domain.SysMenu;
+import com.sbw.finance.biz.domain.SysMenu;
 import com.sbw.finance.biz.dto.form.CreateMenuForm;
 import com.sbw.finance.biz.dto.form.DelMenuForm;
 import com.sbw.finance.biz.dto.form.UpdateMenuForm;
@@ -72,12 +72,12 @@ public interface SysMenuService {
      * @param ids
      * @return
      */
-    //List<SysMenu> listByIds(List<Integer> ids);
+    List<SysMenu> listByIds(List<Integer> ids);
 
     /**
      * 查询菜单列表
      *
      * @return
      */
-    //List<SysMenu> list();
+    List<SysMenu> list();
 }

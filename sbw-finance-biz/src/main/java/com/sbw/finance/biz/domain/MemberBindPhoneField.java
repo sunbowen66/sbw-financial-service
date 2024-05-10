@@ -1,23 +1,23 @@
 package com.sbw.finance.biz.domain;
 
-import com.sbw.mybatis.help.FieldResult;
 import com.sbw.mybatis.help.DbField;
+import com.sbw.mybatis.help.FieldResult;
 import java.util.Collections;
 
 public class MemberBindPhoneField {
-    public static com.sbw.mybatis.help.DbField Id = new DbField("id","id","BIGINT","java.lang.Long");
+    public static DbField Id = new DbField("id","id","BIGINT","java.lang.Long");
 
-    public static com.sbw.mybatis.help.DbField Phone = new DbField("phone","phone","VARCHAR","java.lang.String");
+    public static DbField Phone = new DbField("phone","phone","VARCHAR","java.lang.String");
 
-    public static com.sbw.mybatis.help.DbField MemberId = new DbField("member_id","memberId","BIGINT","java.lang.Long");
+    public static DbField MemberId = new DbField("member_id","memberId","BIGINT","java.lang.Long");
 
-    public static com.sbw.mybatis.help.DbField Disable = new DbField("disable","disable","BIT","java.lang.Boolean");
+    public static DbField Disable = new DbField("disable","disable","BIT","java.lang.Boolean");
 
-    public static com.sbw.mybatis.help.DbField CreateTime = new DbField("create_time","createTime","TIMESTAMP","java.util.Date");
+    public static DbField CreateTime = new DbField("create_time","createTime","TIMESTAMP","java.util.Date");
 
-    public static com.sbw.mybatis.help.DbField UpdateTime = new DbField("update_time","updateTime","TIMESTAMP","java.util.Date");
+    public static DbField UpdateTime = new DbField("update_time","updateTime","TIMESTAMP","java.util.Date");
 
-    public static com.sbw.mybatis.help.DbField Password = new DbField("password","password","VARCHAR","java.lang.String");
+    public static DbField Password = new DbField("password","password","VARCHAR","java.lang.String");
 
     public static FieldResult setId(Long id) {
         return new FieldResult(Id, Collections.singletonList(id));

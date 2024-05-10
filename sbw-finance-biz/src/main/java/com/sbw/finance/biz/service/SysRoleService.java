@@ -1,8 +1,8 @@
 package com.sbw.finance.biz.service;
 
 
-//import com.sbw.common.dto.PageHelperRequest;
-//import com.sbw.finance.biz.domain.SysRole;
+import com.sbw.common.dto.PageHelperRequest;
+import com.sbw.finance.biz.domain.SysRole;
 import com.sbw.finance.biz.dto.form.*;
 import com.sbw.finance.biz.dto.vo.GetRoleDetailVo;
 import com.sbw.finance.biz.dto.vo.ListRoleVo;
@@ -28,7 +28,7 @@ public interface SysRoleService {
      * @param form
      * @return
      */
-    //PageInfo<ListRoleVo> list(ListRoleForm form);
+    PageInfo<ListRoleVo> list(ListRoleForm form);
 
     /**
      * 查看角色列表
@@ -36,7 +36,7 @@ public interface SysRoleService {
      * @param form
      * @return
      */
-    //List<SysRole> list(PageHelperRequest form);
+    List<SysRole> list(PageHelperRequest form);
 
     /**
      * 删除角色

@@ -1,29 +1,29 @@
 package com.sbw.finance.biz.domain;
 
-import com.sbw.mybatis.help.FieldResult;
 import com.sbw.mybatis.help.DbField;
+import com.sbw.mybatis.help.FieldResult;
 import java.util.Collections;
 
 public class MemberField {
-    public static com.sbw.mybatis.help.DbField Id = new DbField("id","id","BIGINT","java.lang.Long");
+    public static DbField Id = new DbField("id","id","BIGINT","java.lang.Long");
 
-    public static com.sbw.mybatis.help.DbField NickName = new DbField("nick_name","nickName","VARCHAR","java.lang.String");
+    public static DbField NickName = new DbField("nick_name","nickName","VARCHAR","java.lang.String");
 
-    public static com.sbw.mybatis.help.DbField Disable = new DbField("disable","disable","BIT","java.lang.Boolean");
+    public static DbField Disable = new DbField("disable","disable","BIT","java.lang.Boolean");
 
-    public static com.sbw.mybatis.help.DbField CreateTime = new DbField("create_time","createTime","TIMESTAMP","java.util.Date");
+    public static DbField CreateTime = new DbField("create_time","createTime","TIMESTAMP","java.util.Date");
 
-    public static com.sbw.mybatis.help.DbField UpdateTime = new DbField("update_time","updateTime","TIMESTAMP","java.util.Date");
+    public static DbField UpdateTime = new DbField("update_time","updateTime","TIMESTAMP","java.util.Date");
 
-    public static com.sbw.mybatis.help.DbField Name = new DbField("name","name","VARCHAR","java.lang.String");
+    public static DbField Name = new DbField("name","name","VARCHAR","java.lang.String");
 
-    public static com.sbw.mybatis.help.DbField AvatarUrl = new DbField("avatar_url","avatarUrl","VARCHAR","java.lang.String");
+    public static DbField AvatarUrl = new DbField("avatar_url","avatarUrl","VARCHAR","java.lang.String");
 
-    public static com.sbw.mybatis.help.DbField TenantId = new DbField("tenant_id","tenantId","BIGINT","java.lang.Long");
+    public static DbField TenantId = new DbField("tenant_id","tenantId","BIGINT","java.lang.Long");
 
-    public static com.sbw.mybatis.help.DbField Email = new DbField("email","email","VARCHAR","java.lang.String");
+    public static DbField Email = new DbField("email","email","VARCHAR","java.lang.String");
 
-    public static com.sbw.mybatis.help.DbField SysRoleIds = new DbField("sys_role_ids","sysRoleIds","LONGVARCHAR","java.lang.String");
+    public static DbField SysRoleIds = new DbField("sys_role_ids","sysRoleIds","LONGVARCHAR","java.lang.String");
 
     public static FieldResult setId(Long id) {
         return new FieldResult(Id, Collections.singletonList(id));

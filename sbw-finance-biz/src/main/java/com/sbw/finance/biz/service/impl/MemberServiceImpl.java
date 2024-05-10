@@ -2,7 +2,10 @@ package com.sbw.finance.biz.service.impl;
 
 
 import com.sbw.common.constant.CommonConstant;
+import com.sbw.common.service.TokenService;
+import com.sbw.finance.biz.config.ObjectConvertor;
 import com.sbw.finance.biz.domain.Member;
+import com.sbw.finance.biz.dto.AdminDTO;
 import com.sbw.finance.biz.dto.form.UpdateEmailAndNameForm;
 import com.sbw.finance.biz.dto.vo.ListMemberVo;
 import com.sbw.finance.biz.mapper.MemberMapper;
@@ -21,8 +24,8 @@ import static com.sbw.finance.biz.domain.MemberField.*;
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
     final MemberMapper memberMapper;
-    //final TokenService<AdminDTO> tokenService;
-    //final ObjectConvertor objectConvertor;
+    final TokenService<AdminDTO> tokenService;
+    final ObjectConvertor objectConvertor;
 
     /**
      * 注册
@@ -61,30 +64,30 @@ public class MemberServiceImpl implements MemberService {
      * @param form
      * @return
      */
-//    @Override
-//    public boolean updateEmailAndName(UpdateEmailAndNameForm form) {
-//        MyBatisWrapper<Member> wrapper = new MyBatisWrapper<>();
-//        wrapper.update(setEmail(form.getEmail()))
-//                .update(setName(form.getName()))
-//                .whereBuilder()
-//                .andEq(setId(tokenService.getThreadLocalUserId()))
-//                .andEq(setDisable(false));
-//        return memberMapper.updateField(wrapper) > 0;
-//    }
+    @Override
+    public boolean updateEmailAndName(UpdateEmailAndNameForm form) {
+        MyBatisWrapper<Member> wrapper = new MyBatisWrapper<>();
+        wrapper.update(setEmail(form.getEmail()))
+                .update(setName(form.getName()))
+                .whereBuilder()
+                .andEq(setId(tokenService.getThreadLocalUserId()))
+                .andEq(setDisable(false));
+        return memberMapper.updateField(wrapper) > 0;
+    }
 
     /**
      * 查询用户列表
      *
      * @return
      */
-//    @Override
-//    public List<ListMemberVo> listMember() {
-//        MyBatisWrapper<Member> wrapper = new MyBatisWrapper<>();
-//        wrapper.select(Id, NickName, Name)
-//                .whereBuilder()
-//                .andEq(TenantId, tokenService.getThreadLocalTenantId())
-//                .andEq(Disable, false);
-//        List<Member> members = memberMapper.list(wrapper);
-//        return objectConvertor.toListMemberVo(members);
-//    }
+    @Override
+    public List<ListMemberVo> listMember() {
+        MyBatisWrapper<Member> wrapper = new MyBatisWrapper<>();
+        wrapper.select(Id, NickName, Name)
+                .whereBuilder()
+                .andEq(TenantId, tokenService.getThreadLocalTenantId())
+                .andEq(Disable, false);
+        List<Member> members = memberMapper.list(wrapper);
+        return objectConvertor.toListMemberVo(members);
+    }
 }
